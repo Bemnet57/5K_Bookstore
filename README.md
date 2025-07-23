@@ -57,5 +57,5 @@ This website is designed to:
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/Bemnet57/5K_Bokkstore.git
-   cd 5K_Bokkstore/backend
+   git clone https://github.com/Bemnet57/5K_Bookstore.git
+   cd 5K_Bookstore/backend
