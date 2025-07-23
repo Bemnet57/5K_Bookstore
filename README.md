@@ -59,3 +59,23 @@ This website is designed to:
    ```bash
    git clone https://github.com/Bemnet57/5K_Bookstore.git
    cd 5K_Bookstore/backend
+2. **Create virtual environment**
+   ```bash
+   python -m venv env
+   source env/bin/activate  # On Windows use: env\Scripts\activate
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+4. **Set up environment variables**
+   Create a .env file in backend/ with:
+   ```bash
+   DB_NAME=yourdbname
+   DB_USER=yourdbuser
+   DB_PASSWORD=yourdbpassword
+   SECRET_KEY=yourdjango_secret_key
+5. **Run the server**
+   ```bash
+   python manage.py migrate
+   python manage.py runserver   
+
+
