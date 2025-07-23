@@ -67,7 +67,7 @@ This website is designed to:
    ```bash
    pip install -r requirements.txt
 4. **Set up environment variables**
-   Create a .env file in backend/ with:
+   - Create a .env file in backend/ with:
    ```bash
    DB_NAME=yourdbname
    DB_USER=yourdbuser
