@@ -91,6 +91,12 @@ This website is designed to:
    │   ├── index.html
    │   └── css/
    │
-   └── README.md
+   └── README.md 
+```
 
+## 🧠 Contributing
+#### We follow Agile sprints and push all code to GitHub. If you'd like to collaborate:
 
+- Fork this repository or work from a feature branch.
+- Ensure code follows PEP8 and is documented.
+- Open Pull Requests with descriptive messages.
