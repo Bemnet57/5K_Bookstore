@@ -100,3 +100,7 @@ This website is designed to:
 - Fork this repository or work from a feature branch.
 - Ensure code follows PEP8 and is documented.
 - Open Pull Requests with descriptive messages.
+##  Status
+- 🔧 Currently in development (Sprint 1)
+- 🎯 Backend setup and wireframes in progress
+- ✅ GitHub and Project Board ready
