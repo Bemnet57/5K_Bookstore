@@ -79,8 +79,6 @@ This website is designed to:
    python manage.py runserver   
 ## 🗂️ Project Structure
 ```bash
-Copy
-Edit
 bookclub_website/
 │
 ├── backend/
