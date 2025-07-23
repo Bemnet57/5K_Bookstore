@@ -77,5 +77,22 @@ This website is designed to:
    ```bash
    python manage.py migrate
    python manage.py runserver   
+## 🗂️ Project Structure
+```bash
+Copy
+Edit
+bookclub_website/
+│
+├── backend/
+│   ├── bookclub_backend/
+│   ├── books/
+│   ├── users/
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── index.html
+│   └── css/
+│
+└── README.md
 
 
