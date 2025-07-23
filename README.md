@@ -78,19 +78,19 @@ This website is designed to:
    python manage.py migrate
    python manage.py runserver   
 ## 🗂️ Project Structure
-```bash
-bookclub_website/
-│
-├── backend/
-│   ├── bookclub_backend/
-│   ├── books/
-│   ├── users/
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── index.html
-│   └── css/
-│
-└── README.md
+   ```bash
+   bookclub_website/
+   │
+   ├── backend/
+   │   ├── bookclub_backend/
+   │   ├── books/
+   │   ├── users/
+   │   └── requirements.txt
+   │
+   ├── frontend/
+   │   ├── index.html
+   │   └── css/
+   │
+   └── README.md
 
 
