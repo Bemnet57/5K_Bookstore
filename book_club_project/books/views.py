@@ -10,12 +10,27 @@ class DeliveryOptionViewSet(viewsets.ModelViewSet):
 
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
-    serializer_class = BookSerializer
+    def get_serializer_class(self):
+        if self.action in ['create', 'update', 'partial_update']:
+            from .serializers import BookWriteSerializer
+            return BookWriteSerializer
+        return BookSerializer
 
 class RentalRequestViewSet(viewsets.ModelViewSet):
     queryset = RentalRequest.objects.all()
-    serializer_class = RentalRequestSerializer
+
+    def get_serializer_class(self):
+        if self.action in ['create', 'update', 'partial_update']:
+            from .serializers import RentalRequestWriteSerializer
+            return RentalRequestWriteSerializer
+        return RentalRequestSerializer
+    
 
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
-    serializer_class = NotificationSerializer
+
+    def get_serializer_class(self):
+        if self.action in ['create', 'update', 'partial_update']:
+            from .serializers import NotificationWriteSerializer
+            return NotificationWriteSerializer
+        return NotificationSerializer

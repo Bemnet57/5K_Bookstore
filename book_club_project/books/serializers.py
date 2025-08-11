@@ -23,6 +23,21 @@ class BookSerializer(serializers.ModelSerializer):
             'posted_by',
             'amount_in_store',
             ]
+        
+# serializers.py
+class BookWriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Book
+        fields = [
+            'title',
+            'author',
+            'keywords',
+            'summary',
+            'cover_image',
+            'posted_by',
+            'amount_in_store',
+        ]
+
 
 class RentalRequestSerializer(serializers.ModelSerializer):
     class Meta:
@@ -40,9 +55,28 @@ class RentalRequestSerializer(serializers.ModelSerializer):
             ]
         read_only_fields = ['requested_at']
 
+# serializers.py
+class RentalRequestWriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RentalRequest
+        fields = [
+            'requested_by',
+            'requested_book',
+            'delivery_option',
+        ]
+
+
 class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
         receiver = UserSerializer(read_only=True)
         fields = ['id', 'receiver', 'sent_at', 'message']
         read_only_fields = ['sent_at']
+
+class NotificationWriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = [
+            'receiver',
+            'message',
+        ]
