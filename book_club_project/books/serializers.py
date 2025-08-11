@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import DeliveryOption, Book, RentalRequest, Notification
-from users.serializers import UserSerializer
+from ..users.serializers import UserSerializer
 
 
 
@@ -24,7 +24,7 @@ class BookSerializer(serializers.ModelSerializer):
             'amount_in_store',
             ]
         
-# serializers.py
+
 class BookWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
@@ -55,7 +55,6 @@ class RentalRequestSerializer(serializers.ModelSerializer):
             ]
         read_only_fields = ['requested_at']
 
-# serializers.py
 class RentalRequestWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = RentalRequest
