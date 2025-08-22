@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar_temp";
 import Footer from "./components/Footer";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
+import './App.css';
 
 
 function App() {
@@ -10,6 +12,7 @@ function App() {
     <BrowserRouter>
       <div className="flex flex-col min-h-screen">
         <Navbar />
+        <Home/>
         <SignUp/>
         <Login/>
         <main className="flex-grow flex items-center justify-center">

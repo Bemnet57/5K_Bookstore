@@ -4,6 +4,8 @@ import api from "../services/api";
 function SignUp(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+    const [name, setName] = useState("");
     const [rememberMe, setRememberMe] = useState(false); 
     const [error, setError] = useState("");
     const handleSubmit = async (e) => {
@@ -36,9 +38,9 @@ function SignUp(){
                 type="name"
                 placeholder="write your full name here"
                 value = {name}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
                 required
-                className="SignUp_email"/>
+                className="Name"/>
 
                 <input
                 type ="password"
@@ -47,6 +49,13 @@ function SignUp(){
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="SignUp_password_input"/>
+
+                <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="the_eye">
+            {showPassword ? "Hide" : "Show"}
+          </button>
 
                 <label className="remember_checkbox">
           <input
