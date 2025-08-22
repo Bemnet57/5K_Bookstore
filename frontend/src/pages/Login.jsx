@@ -1,12 +1,13 @@
 import { useState } from "react";
 import api from "../services/api";
 
-function Login(){
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [rememberMe, setRememberMe] = useState(false); 
-    const [error, setError] = useState("");
-    const handleSubmit = async (e) => {
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await api.post("auth/login/", { email, password });
@@ -25,51 +26,64 @@ function Login(){
     }
   };
 
+  return (
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="card p-4 shadow-sm" style={{ maxWidth: "400px", width: "100%" }}>
+        <h2 className="card-title text-center mb-3">Welcome Back!</h2>
+        <p className="text-center text-muted mb-4">Login to your account</p>
 
-    return (
-        <div className="Login_page">
-            <h2>Welcome back!!!</h2>
-            <h2>Login to your account</h2>
+        {error && <div className="alert alert-danger">{error}</div>}
 
-            <form onSubmit ={handleSubmit} className="login-form">
-                <input
-                type="email"
-                placeholder="write your email here"
-                value = {email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="Login_input"/>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              placeholder="Write your email here"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="form-control"
+            />
+          </div>
 
-                <input
-                type ="password"
-                placeholder="secure account well"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="password_input"/>
+          <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              placeholder="Secure account well"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="form-control"
+            />
+          </div>
 
-                <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={rememberMe}
-            onChange={(e) => setRememberMe(e.target.checked)}
-            className="Remember_checkbox"
-          />
-          Remember Me
-        </label>
-         
-         <button type="submit" className="Login_button">
-          Login
-        </button>
+          <div className="form-check mb-3">
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+              className="form-check-input"
+              id="rememberMe"
+            />
+            <label className="form-check-label" htmlFor="rememberMe">
+              Remember Me
+            </label>
+          </div>
 
-        <button type="submit" className="SignUp_button">
-          SignUp
-        </button>
-
+          <div className="d-grid gap-2">
+            <button type="submit" className="btn btn-primary">
+              Login
+            </button>
+            <button type="button" className="btn btn-outline-secondary">
+              Sign Up
+            </button>
+          </div>
         </form>
-
-        </div>
-    )
+      </div>
+    </div>
+  );
 }
 
 export default Login;

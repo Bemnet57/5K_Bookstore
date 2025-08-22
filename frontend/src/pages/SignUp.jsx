@@ -1,17 +1,18 @@
 import { useState } from "react";
 import api from "../services/api";
 
-function SignUp(){
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
-    const [name, setName] = useState("");
-    const [rememberMe, setRememberMe] = useState(false); 
-    const [error, setError] = useState("");
-    const handleSubmit = async (e) => {
+function SignUp() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [name, setName] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("auth/register/", { username, email, password });
+      const response = await api.post("auth/register/", { username: name, email, password });
       console.log("SignUp success:", response.data);
       // Redirect to login or save token
     } catch (err) {
@@ -19,68 +20,83 @@ function SignUp(){
     }
   };
 
+  return (
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="card p-4 shadow-sm" style={{ maxWidth: "400px", width: "100%" }}>
+        <h2 className="card-title text-center mb-3">Welcome!</h2>
+        <p className="text-center text-muted mb-4">Create a new account</p>
 
-    return (
-        <div className="SignUp_page">
-            <h2>Welcome!</h2>
-            <h2>Create a new account</h2>
+        {error && <div className="alert alert-danger">{error}</div>}
 
-            <form onSubmit ={handleSubmit} className="SignUp-form">
-                <input
-                type="email"
-                placeholder="write your email here"
-                value = {email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="SignUp_email"/>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Full Name</label>
+            <input
+              type="text"
+              placeholder="Write your full name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="form-control"
+            />
+          </div>
 
-                 <input
-                type="name"
-                placeholder="write your full name here"
-                value = {name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                className="Name"/>
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              placeholder="Write your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="form-control"
+            />
+          </div>
 
-                <input
-                type ="password"
-                placeholder="secure account well"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="SignUp_password_input"/>
+          <div className="mb-3 position-relative">
+            <label className="form-label">Password</label>
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Secure account well"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="form-control"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="btn btn-sm btn-outline-secondary position-absolute top-50 end-0 translate-middle-y me-2"
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
 
-                <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="the_eye">
-            {showPassword ? "Hide" : "Show"}
-          </button>
+          <div className="form-check mb-3">
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+              className="form-check-input"
+              id="rememberMe"
+            />
+            <label className="form-check-label" htmlFor="rememberMe">
+              Remember Me
+            </label>
+          </div>
 
-                <label className="remember_checkbox">
-          <input
-            type="checkbox"
-            checked={rememberMe}
-            onChange={(e) => setRememberMe(e.target.checked)}
-            className="Remember_checkbox"
-          />
-          Remember Me
-        </label>
-    
-
-        <button type="submit" className="SignUp_button">
-          SignUp
-        </button>
-
-        <button type="submit" className="Login_button">
-          Login
-        </button>
-
+          <div className="d-grid gap-2">
+            <button type="submit" className="btn btn-primary">
+              Sign Up
+            </button>
+            <button type="button" className="btn btn-outline-secondary">
+              Login
+            </button>
+          </div>
         </form>
-
-        </div>
-    )
+      </div>
+    </div>
+  );
 }
-
 
 export default SignUp;
