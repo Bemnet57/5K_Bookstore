@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 // import Home from "./pages/Home";
 import './App.css';
 import BookOrderPage from "./pages/BookOrderPage";
+import './styles/navbar.css';
 
 
 function App() {

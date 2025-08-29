@@ -1,0 +1,38 @@
+.navbar {
+  background-color: #fffcf8; 
+  padding: 1rem 2rem;
+}
+
+.navbar .nav-link {
+  color: #1a1a1a !important; 
+  font-weight: 500;
+}
+
+.navbar .btn-primary {
+  background-color: #6f42c1; /* custom purple */
+  border: none;
+}
+
+.navbar .btn-primary:hover {
+  background-color: #5a3391;
+}
+
+
+
+.dark-theme .navbar {
+  background-color: #212529;
+}
+
+.dark-theme .nav-link,
+.dark-theme .btn-primary {
+  color: #fff !important;
+}
+
+.input-group .form-control {
+  border-right: none;
+}
+
+.input-group .input-group-text {
+  border-left: none;
+  background-color: #fff;
+}

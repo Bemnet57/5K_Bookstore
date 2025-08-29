@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 function Navbar() {
   const navigate = useNavigate();
@@ -14,20 +16,16 @@ function Navbar() {
   const handleSearch = (e) => {
     e.preventDefault();
     const query = e.target.search.value;
-    console.log("Searching for:", query); 
+    console.log("Searching for:", query); // placeholder
     // later → navigate(`/books?search=${query}`);
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light px-4">
       <div className="container-fluid">
         {/* Logo */}
-        <a 
-          className="navbar-brand fw-bold" 
-          href="/home" 
-          onClick={(e) => { e.preventDefault(); navigate("/home"); }}
-        >
-          📚 MyBookApp
+        <a className="navbar-brand" onClick={() => navigate("/home")}>
+          <img src='./logo.png' alt="Logo" height="40" className="d-inline-block align-top"/>
         </a>
 
         {/* Toggler for mobile */}
@@ -40,7 +38,7 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Links + Search + Profile */}
+        {/* Links + Search + Icons */}
         <div className="collapse navbar-collapse" id="navbarContent">
           {/* Links */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -56,26 +54,39 @@ function Navbar() {
           </ul>
 
           {/* Search */}
-          <form className="d-flex me-3" role="search" onSubmit={handleSearch}>
-            <input 
-              className="form-control me-2" 
-              type="search" 
-              name="search"
-              placeholder="Search books..." 
-              aria-label="Search" 
-            />
-            <button className="btn btn-outline-primary" type="submit">Search</button>
-          </form>
+<form className="d-flex me-3" role="search" onSubmit={handleSearch}>
+  <div className="input-group">
+    <input 
+      type="search"
+      name="search"
+      className="form-control"
+      placeholder="Search books..."
+      aria-label="Search"
+    />
+    <span 
+      className="input-group-text bg-white" 
+      style={{ cursor: "pointer" }}
+      onClick={handleSearch}
+    >
+      <i className="bi bi-search"></i>
+    </span>
+  </div>
+</form>
+
 
           {/* Theme toggle */}
           <button className="btn btn-outline-secondary me-3" onClick={toggleTheme}>
-            {theme === "light" ? "🌞" : "🌙"}
+            {theme === "light" ? <i className="bi bi-moon"></i> : <i className="bi bi-sun"></i>}
           </button>
 
-          {/* Profile */}
-          <a className="btn btn-primary" onClick={() => navigate("/profile")}>
-            Profile
-          </a>
+          {/* Profile Icon */}
+          <button 
+            className="btn btn-primary" 
+            style={{ borderRadius: "50%", width: "40px", height: "40px", padding: 0 }}
+            onClick={() => navigate("/profile")}
+          >
+            <i className="bi bi-person-fill"></i>
+          </button>
         </div>
       </div>
     </nav>
