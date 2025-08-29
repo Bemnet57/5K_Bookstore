@@ -1,38 +1,103 @@
-.navbar {
-  background-color: #fffcf8; 
-  padding: 1rem 2rem;
+/* ==========================
+   LIGHT THEME (default)
+   ========================== */
+:root {
+  --text-color: #1a1a1a;
+  --light-text-color: #745a04;
+  --main-btn-color: #fbc40a;
+  --hover-bg-color: #fef7de;
+  --navbar-bg: rgba(255, 255, 255, 0.8);
+  --input-bg: #fff;
 }
 
-.navbar .nav-link {
-  color: #1a1a1a !important; 
+/* ==========================
+   DARK THEME
+   ========================== */
+body.dark-theme {
+  --text-color: #fef7de;
+  --light-text-color: #fbc40a;
+  --main-btn-color: #745a04;
+  --hover-bg-color: #745a04;
+  --navbar-bg: rgba(26, 26, 26, 0.8);
+  --input-bg: #333;
+}
+
+/* ==========================
+   NAVBAR STYLING
+   ========================== */
+.custom-navbar {
+  background-color: var(--navbar-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--main-btn-color);
+  padding: 0.5rem 2rem;
+  z-index: 9999;
+}
+
+/* Nav links */
+.custom-navbar .nav-link {
+  color: var(--text-color) !important;
   font-weight: 500;
+  transition: background 0.3s, color 0.3s;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
 }
 
-.navbar .btn-primary {
-  background-color: #6f42c1; /* custom purple */
-  border: none;
+.custom-navbar .nav-link:hover {
+  background-color: var(--hover-bg-color);
+  color: var(--light-text-color) !important;
+  box-shadow: 0 0 10px var(--hover-bg-color);
 }
 
-.navbar .btn-primary:hover {
-  background-color: #5a3391;
-}
-
-
-
-.dark-theme .navbar {
-  background-color: #212529;
-}
-
-.dark-theme .nav-link,
-.dark-theme .btn-primary {
-  color: #fff !important;
-}
-
+/* Search input group */
 .input-group .form-control {
   border-right: none;
+  border-radius: 0.5rem 0 0 0.5rem;
+  background-color: var(--input-bg);
+  color: var(--text-color);
 }
 
 .input-group .input-group-text {
   border-left: none;
-  background-color: #fff;
+  background-color: var(--input-bg);
+  cursor: pointer;
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: var(--text-color);
+}
+
+.input-group .input-group-text:hover {
+  background-color: var(--hover-bg-color);
+  box-shadow: 0 0 10px var(--hover-bg-color);
+}
+
+/* Profile button */
+.profile-btn {
+  background-color: var(--main-btn-color);
+  border: none;
+  color: var(--text-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.profile-btn:hover {
+  background-color: var(--hover-bg-color);
+  box-shadow: 0 0 10px var(--hover-bg-color);
+}
+
+/* Theme toggle button */
+.btn-outline-secondary {
+  border-color: var(--main-btn-color);
+  color: var(--text-color);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--hover-bg-color);
+  border-color: var(--main-btn-color);
+  box-shadow: 0 0 10px var(--hover-bg-color);
 }
