@@ -6,8 +6,8 @@
   --light-text-color: #745a04;
   --main-btn-color: #fbc40a;
   --hover-bg-color: #fef7de;
-  --navbar-bg: rgba(255, 255, 255, 0.8);
-  --input-bg: #fff;
+  --navbar-bg: #fff7ed; /* solid light background */
+  --input-bg: #fef7de;
 }
 
 /* ==========================
@@ -16,9 +16,9 @@
 body.dark-theme {
   --text-color: #fef7de;
   --light-text-color: #fbc40a;
-  --main-btn-color: #745a04;
+  --main-btn-color: #fbc40a;
   --hover-bg-color: #745a04;
-  --navbar-bg: rgba(26, 26, 26, 0.8);
+  --navbar-bg: #1a1a1a; /* solid dark navbar */
   --input-bg: #333;
 }
 
@@ -26,12 +26,14 @@ body.dark-theme {
    NAVBAR STYLING
    ========================== */
 .custom-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: var(--navbar-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--main-btn-color);
   padding: 0.5rem 2rem;
   z-index: 9999;
+  transition: background 0.3s, padding 0.3s;
 }
 
 /* Nav links */
@@ -46,7 +48,6 @@ body.dark-theme {
 .custom-navbar .nav-link:hover {
   background-color: var(--hover-bg-color);
   color: var(--light-text-color) !important;
-  box-shadow: 0 0 10px var(--hover-bg-color);
 }
 
 /* Search input group */
@@ -55,6 +56,10 @@ body.dark-theme {
   border-radius: 0.5rem 0 0 0.5rem;
   background-color: var(--input-bg);
   color: var(--text-color);
+}
+
+.input-group .form-control::placeholder {
+  color: var(--light-text-color);
 }
 
 .input-group .input-group-text {
@@ -67,7 +72,7 @@ body.dark-theme {
 
 .input-group .input-group-text:hover {
   background-color: var(--hover-bg-color);
-  box-shadow: 0 0 10px var(--hover-bg-color);
+  color: var(--light-text-color);
 }
 
 /* Profile button */
@@ -82,22 +87,32 @@ body.dark-theme {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 .profile-btn:hover {
   background-color: var(--hover-bg-color);
-  box-shadow: 0 0 10px var(--hover-bg-color);
+  color: var(--light-text-color);
 }
 
 /* Theme toggle button */
 .btn-outline-secondary {
   border-color: var(--main-btn-color);
   color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
 }
 
 .btn-outline-secondary:hover {
   background-color: var(--hover-bg-color);
-  border-color: var(--main-btn-color);
-  box-shadow: 0 0 10px var(--hover-bg-color);
+  color: var(--light-text-color);
+}
+
+/* Mobile toggler icon */
+.navbar-toggler-icon {
+  filter: invert(0.2); /* adjusts for dark/light visibility */
+}
+
+/* Optional: shrink navbar slightly when scrolling */
+.custom-navbar.shrink {
+  padding: 0.25rem 2rem;
 }
