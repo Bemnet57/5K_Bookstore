@@ -1,3 +1,4 @@
 .env
 newenv
 myenv
+db.sqlite3
